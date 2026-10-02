@@ -1,0 +1,18 @@
+{
+ "type": "nbadb-data-index",
+ "schema": 1,
+ "files": [
+  {
+   "file": "league_2001.json",
+   "kind": "league-snapshot",
+   "sha256_16": "2ab122fcd9ca59c1",
+   "note": "2001-02开幕真实快照（407人+六属性+合同+规则+FA池）"
+  },
+  {
+   "file": "prospects_pool.json",
+   "kind": "prospects-pool",
+   "sha256_16": "262f1799e45fc4f0",
+   "note": "2002-2021未来选秀班池（238人）"
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+    "display_name": "NBADB League Database",
+    "loading_order": 30,
+    "js": "index.js",
+    "css": "style.css",
+    "author": "agt000",
+    "version": "2.0.0",
+    "homePage": "https://github.com/agt000/NBADB-League-Database",
+    "auto_update": false,
+    "minimum_client_version": "1.18.0",
+    "hooks": {
+        "activate": "onActivate",
+        "disable": "onDisable",
+        "delete": "onDelete",
+        "clean": "onClean"
+    },
+    "generate_interceptor": "nbadbInterceptor"
+}

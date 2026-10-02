@@ -1,0 +1,86 @@
+/* NBADB 联盟数据库 v1.0.0 —— 跟随SillyTavern主题 + 篮球橙点缀 */
+.nbadb-settings { margin-top: 8px; }
+.nbadb-settings hr { margin: 8px 0; opacity: 0.5; }
+.nbadb-flex { display: flex; gap: 6px; margin: 4px 0; flex-wrap: wrap; align-items: center; }
+.nbadb-flex input, .nbadb-flex select { min-width: 120px; flex: 1; }
+.nbadb-flex input[readonly] { opacity: 0.8; font-family: monospace; font-size: 0.85em; }
+.nbadb-steps { display: flex; flex-direction: column; gap: 4px; }
+.nbadb-status { white-space: pre-wrap; font-size: 0.9em; margin-top: 6px; padding: 6px 8px; border-radius: 6px; background: color-mix(in srgb, var(--SmartThemeQuoteColor, #2a2a45) 60%, transparent); }
+.nbadb-pre { max-height: 220px; overflow: auto; font-size: 0.75em; white-space: pre-wrap; background: rgba(0,0,0,0.35); border-radius: 6px; padding: 6px; margin-top: 6px; }
+#nbadb_saved_state:empty { display: none; }
+.nbadb-saved-panel { margin-top: 6px; padding: 8px; border-left: 3px solid #FF6100; background: rgba(255, 97, 0, 0.10); border-radius: 4px; font-size: 0.9em; }
+.nbadb-saved-roster { margin-top: 4px; font-size: 0.8em; opacity: 0.85; }
+
+/* 全屏管理面板 */
+#nbadb-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 99999; display: flex; align-items: center; justify-content: center; }
+#nbadb-box { background: #191922; color: #d6d6de; width: min(1100px, 95vw); height: min(760px, 92vh); border-radius: 10px; border: 1px solid var(--SmartThemeBorderColor, #666); display: flex; flex-direction: column; padding: 10px 14px; gap: 8px; }
+.nbadb-head { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
+#nbadb-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+.nbadb-tab.active { background: #FF6100; color: #1b1b2f; border-color: #FF6100; }
+#nbadb-body { flex: 1; overflow: auto; }
+.nbadb-table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+.nbadb-table th { position: sticky; top: 0; background: #101018; color: #FF6100; text-align: left; padding: 5px 6px; white-space: nowrap; border-bottom: 2px solid #FF6100; font-weight: 600; }
+.nbadb-table td { padding: 2px 3px; border-bottom: 1px solid rgba(255,255,255,0.08); color: #b9b9c4; }
+.nbadb-table input { width: 100%; min-width: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); color: #d6d6de; padding: 3px 5px; font-size: 1em; border-radius: 3px; }
+.nbadb-table input:hover, .nbadb-table input:focus { border-color: #FF6100; background: rgba(255,97,0,0.10); color: #f0f0f4; outline: none; }
+.nbadb-err { color: #f87171; padding: 10px; }
+.nbadb-form-wide { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+.nbadb-form-wide input { width: 100%; margin-top: 2px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); color: #d6d6de; border-radius: 4px; padding: 3px 6px; }
+.nbadb-form-wide b { color: #FF6100; }
+.nbadb-flex input, .nbadb-flex select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: #d6d6de; border-radius: 4px; padding: 3px 6px; }
+#nbadb-tabs .nbadb-tab { color: #d6d6de; }
+#nbadb-search { background: rgba(255,255,255,0.06) !important; color: #e2e2e8 !important; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; }
+
+/* 聊天内回执 */
+.nbadb-receipt { margin-top: 8px; border-left: 3px solid #FF6100; background: rgba(255, 97, 0, 0.10); border-radius: 4px; padding: 6px 10px; font-size: 0.85em; }
+.nbadb-receipt-title { font-weight: bold; color: #FF6100; }
+.nbadb-receipt-body { opacity: 0.9; margin-top: 2px; }
+
+@media (max-width: 768px) {
+    #nbadb-box { width: 98vw; height: 96vh; }
+    .nbadb-table { font-size: 0.75em; }
+}
+
+/* ===== v1.3.1 Excel式排序/筛选 ===== */
+.nbadb-table th { display: flex; align-items: center; gap: 4px; }
+.nbadb-th-sort { cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: 3px; flex: 1; min-width: 0; }
+.nbadb-th-sort:hover { color: #ffa059; }
+.nbadb-th-sort.nbadb-sorted { color: #FF6100; font-weight: 700; }
+.nbadb-sort-arrow { font-style: normal; font-size: 0.85em; color: #FF6100; min-width: 0.8em; }
+.nbadb-th-filter { background: transparent; border: none; color: #7a7a88; cursor: pointer; font-size: 0.8em; padding: 2px 3px; border-radius: 3px; }
+.nbadb-th-filter:hover { color: #FF6100; background: rgba(255,97,0,0.12); }
+.nbadb-th-filter.nbadb-th-filtered { color: #FF6100; background: rgba(255,97,0,0.18); }
+.nbadb-filter-menu { position: fixed; z-index: 100000; width: 260px; max-height: 380px; background: #16161f; border: 1px solid #FF6100; border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.6); color: #d6d6de; }
+.nbadb-filter-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.85em; color: #FF6100; font-weight: 600; }
+.nbadb-filter-search { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #e2e2e8; border-radius: 4px; padding: 4px 6px; font-size: 0.85em; }
+.nbadb-filter-list { overflow: auto; max-height: 220px; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px; }
+.nbadb-filter-item { display: flex; align-items: center; gap: 6px; padding: 2px 4px; cursor: pointer; font-size: 0.85em; border-radius: 3px; }
+.nbadb-filter-item:hover { background: rgba(255,97,0,0.10); }
+.nbadb-filter-item input { accent-color: #FF6100; }
+.nbadb-filter-item span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nbadb-filter-btns { display: flex; gap: 4px; }
+.nbadb-filter-btns .menu_button { font-size: 0.8em; padding: 3px 8px; }
+.nbadb-filter-clear { font-size: 0.8em; padding: 2px 6px; }
+.nbadb-view-reset { font-size: 0.8em; }
+.nbadb-primary { background: #FF6100 !important; color: #16161f !important; border-color: #FF6100 !important; font-weight: 600; }
+
+/* ===== v1.3.2 修正与放大 ===== */
+.nbadb-table th { display: table-cell; padding: 8px 10px; z-index: 2; white-space: nowrap; vertical-align: middle; }
+.nbadb-th-inner { display: flex; align-items: center; gap: 6px; min-height: 24px; }
+.nbadb-th-sort:not(.nbadb-sorted):hover::after { content: ' ⇅'; font-size: 0.8em; opacity: 0.7; }
+.nbadb-th-filtered-dot { color: #FF6100; font-size: 0.75em; }
+.nbadb-table { font-size: 0.98em; }
+.nbadb-table td { padding: 5px 6px; min-width: 120px; vertical-align: middle; }
+.nbadb-table td.nbadb-w-lg { min-width: 230px; }
+.nbadb-table td input { min-width: 118px; min-height: 34px; padding: 6px 8px; font-size: 1.02em; box-sizing: border-box; line-height: 1.35; }
+.nbadb-table td.nbadb-w-lg input { min-width: 224px; }
+.nbadb-filter-row { display: flex; align-items: center; gap: 6px; font-size: 0.9em; }
+.nbadb-filter-row select { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); color: #e2e2e8; border-radius: 4px; padding: 5px 6px; }
+.nbadb-filter-sub { font-size: 0.8em; opacity: 0.75; }
+.nbadb-filter-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.nbadb-filter-chip { background: rgba(255,97,0,0.16); border: 1px solid rgba(255,97,0,0.5); color: #ffb27a; border-radius: 10px; padding: 2px 8px; font-size: 0.78em; display: inline-flex; align-items: center; gap: 4px; }
+.nbadb-chip-x { cursor: pointer; }
+.nbadb-chip-x:hover { color: #fff; }
+.nbadb-filter-menu { width: 300px; }
+.nbadb-filter-empty { padding: 10px; opacity: 0.6; font-size: 0.85em; text-align: center; }
+#nbadb-body .nbadb-flex .nbadb-filter-open i { margin-right: 4px; }
